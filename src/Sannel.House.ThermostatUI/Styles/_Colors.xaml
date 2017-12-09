@@ -1,0 +1,8 @@
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<SolidColorBrush x:Key="ThemeControlForegroundBaseHighBrush" Color="{ThemeResource SystemBaseHighColor}" />
+	<SolidColorBrush x:Key="StarTrekOrange" Color="#FFFFAD01" />
+	<SolidColorBrush x:Key="StarTrekLightBlue" Color="#FFB3C8FD" />
+	<SolidColorBrush x:Key="StarTrekBlue" Color="#FF9D9DFF" />
+</ResourceDictionary>
