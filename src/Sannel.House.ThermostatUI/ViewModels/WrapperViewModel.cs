@@ -43,14 +43,6 @@ namespace Sannel.House.ThermostatUI.ViewModels
 		public Visibility IsSystemAvailable => (ApiInformation.IsApiContractPresent("Windows.System.SystemManagementContract", 1, 0)
 			&& string.Compare(AnalyticsInfo.VersionInfo.DeviceFamily, "Windows.IoT", true) == 0) ? Visibility.Visible : Visibility.Collapsed;
 
-		public String Text
-		{
-			get
-			{
-				return Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
-			}
-		}
-
 		private ICommand shutdownCommand;
 
 		public ICommand ShutdownCommand

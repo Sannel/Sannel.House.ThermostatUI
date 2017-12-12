@@ -133,7 +133,7 @@
 				Padding="0,5,0,0"
 				>
 				<Button HorizontalAlignment="Stretch" Style="{StaticResource BlueNavButton}">
-					<TextBlock HorizontalAlignment="Right" Text="{Binding Text}"></TextBlock>
+					<TextBlock HorizontalAlignment="Right"></TextBlock>
 				</Button>
 				<Button HorizontalAlignment="Stretch" Style="{StaticResource PeachNavButton}">
 					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
@@ -141,12 +141,19 @@
 				<Button HorizontalAlignment="Stretch" Style="{StaticResource LightPeachNavButton}">
 					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
 				</Button>
-				<Button HorizontalAlignment="Stretch" Style="{StaticResource PurpleNavButton}">
+				<!--<Button HorizontalAlignment="Stretch" Style="{StaticResource PurpleNavButton}">
 					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
-				</Button>
-				<Button HorizontalAlignment="Stretch" Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightMagentaNavButton}" Command="{Binding ShutdownCommand}">
+					<Button.Flyout>
+						<Flyout Placement="Right">
+							<StackPanel BorderBrush="Transparent" Background="Aquamarine">
+								<TextBlock>blue</TextBlock>
+							</StackPanel>
+						</Flyout>
+					</Button.Flyout>
+				</Button>-->
+				<!--<Button HorizontalAlignment="Stretch" Style="{StaticResource LightMagentaNavButton}" Command="{Binding ShutdownCommand}">
 					<TextBlock HorizontalAlignment="Right">SYSTEM</TextBlock>
-				</Button>
+				</Button>-->
 			</StackPanel>
 			<Border
 				Grid.Row="2"
