@@ -21,7 +21,7 @@ namespace Sannel.House.ThermostatUI.Views
 
 		protected async override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			await ViewModel.LoadDataAsync(WindowStates.CurrentState);
+			//await ViewModel.LoadDataAsync(WindowStates.CurrentState);
 		}
 	}
 }

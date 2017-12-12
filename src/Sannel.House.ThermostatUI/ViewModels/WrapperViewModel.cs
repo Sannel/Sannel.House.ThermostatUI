@@ -12,6 +12,8 @@ using Sannel.House.ThermostatUI.Services;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.Foundation.Metadata;
+using Windows.System.Profile;
 
 namespace Sannel.House.ThermostatUI.ViewModels
 {
@@ -36,6 +38,32 @@ namespace Sannel.House.ThermostatUI.ViewModels
 		{
 			get { return _selected; }
 			set { Set(ref _selected, value); }
+		}
+
+		public Visibility IsSystemAvailable => (ApiInformation.IsApiContractPresent("Windows.System.SystemManagementContract", 1, 0)
+			&& string.Compare(AnalyticsInfo.VersionInfo.DeviceFamily, "Windows.IoT", true) == 0) ? Visibility.Visible : Visibility.Collapsed;
+
+		public String Text
+		{
+			get
+			{
+				return Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+			}
+		}
+
+		private ICommand shutdownCommand;
+
+		public ICommand ShutdownCommand
+		{
+			get
+			{
+				return shutdownCommand ?? (shutdownCommand = new RelayCommand(shutdown));
+			}
+		}
+
+		private void shutdown()
+		{
+			Windows.System.ShutdownManager.BeginShutdown(Windows.System.ShutdownKind.Restart, TimeSpan.FromSeconds(30));
 		}
 
 		private ICommand _itemClickCommand;
@@ -68,25 +96,8 @@ namespace Sannel.House.ThermostatUI.ViewModels
 			}
 		}
 
-		public ObservableCollection<SampleOrder> SampleItems { get; private set; } = new ObservableCollection<SampleOrder>();
-
 		public WrapperViewModel()
 		{
-		}
-
-		public async Task LoadDataAsync(VisualState currentState)
-		{
-			_currentState = currentState;
-			SampleItems.Clear();
-
-			var data = await SampleDataService.GetSampleModelDataAsync();
-
-			foreach (var item in data)
-			{
-				SampleItems.Add(item);
-			}
-
-			Selected = SampleItems.First();
 		}
 
 		private void OnStateChanged(VisualStateChangedEventArgs args)

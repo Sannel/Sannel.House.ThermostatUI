@@ -44,6 +44,8 @@
 			<RowDefinition x:Name="TitleRow" Height="40"/>
 			<RowDefinition Height="20" />
 			<RowDefinition Height="*"/>
+			<RowDefinition Height="10" />
+			<RowDefinition Height="20" />
 		</Grid.RowDefinitions>
 
 		<Grid.ColumnDefinitions>
@@ -113,46 +115,97 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="5" />
 				<RowDefinition Height="*"/>
+				<RowDefinition Height="30" />
 			</Grid.RowDefinitions>
 			<Border
 				Grid.Row="0"
 				Background="{StaticResource StarTrekOrange}"
 			/>
-
-			<!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your master content.-->
-			<ListView
-				x:Name="MasterListView"
+			<Border
 				Grid.Row="1"
-				ItemsSource="{x:Bind ViewModel.SampleItems, Mode=OneWay}"
-				SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
-				ItemContainerTransitions="{x:Null}"
-				ItemTemplate="{StaticResource MasterListViewItemTemplate}"
-				IsItemClickEnabled="True"
-				Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-				<i:Interaction.Behaviors>
-					<ic:EventTriggerBehavior EventName="ItemClick">
-						<ic:InvokeCommandAction Command="{x:Bind ViewModel.ItemClickCommand}" />
-					</ic:EventTriggerBehavior>
-				</i:Interaction.Behaviors>
-				<ListView.ItemContainerStyle>
-					<Style TargetType="ListViewItem">
-						<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-						<Setter Property="Padding" Value="0"/>
-					</Style>
-				</ListView.ItemContainerStyle>
-			</ListView>
+				Margin="0,5,0,8"
+				Background="{StaticResource StarTrekRed}"
+			/>
+			<StackPanel
+				Grid.Row="1" 
+				VerticalAlignment="Top"
+				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+				Padding="0,5,0,0"
+				>
+				<Button HorizontalAlignment="Stretch" Style="{StaticResource BlueNavButton}">
+					<TextBlock HorizontalAlignment="Right" Text="{Binding Text}"></TextBlock>
+				</Button>
+				<Button HorizontalAlignment="Stretch" Style="{StaticResource PeachNavButton}">
+					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
+				</Button>
+				<Button HorizontalAlignment="Stretch" Style="{StaticResource LightPeachNavButton}">
+					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
+				</Button>
+				<Button HorizontalAlignment="Stretch" Style="{StaticResource PurpleNavButton}">
+					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
+				</Button>
+				<Button HorizontalAlignment="Stretch" Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightMagentaNavButton}" Command="{Binding ShutdownCommand}">
+					<TextBlock HorizontalAlignment="Right">SYSTEM</TextBlock>
+				</Button>
+			</StackPanel>
+			<Border
+				Grid.Row="2"
+				Background="{StaticResource StarTrekBlue}"
+			/>
 		</Grid>
 
 		<Grid
 			x:Name="DetailContentPresenter"
 			Grid.Row="1"
 			Grid.Column="1"
-			Grid.RowSpan="2"
+			Grid.RowSpan="3"
 			Padding="24,0,0,0">
 
 			<views:WrapperDetailControl
 				x:Name="DetailControl"
 				MasterMenuItem="{x:Bind ViewModel.Selected, Mode=OneWay}"/>
+		</Grid>
+
+		<Grid 
+			Grid.Column="0"
+			Grid.RowSpan="2"
+			Grid.Row="3"
+			>
+			<Border
+				Background="{StaticResource StarTrekBlue}"
+				CornerRadius="0,0,0,40"
+				>
+				
+			</Border>
+			<Border 
+				Height="10"
+				Width="20"
+				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+				CornerRadius="0,0,0,10" HorizontalAlignment="Right" VerticalAlignment="Top"
+				/>
+		</Grid>
+		<Grid
+			Grid.Column="1"
+			Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="4"/>
+				<ColumnDefinition Width="30" />
+			</Grid.ColumnDefinitions>
+			<Border
+				Background="{StaticResource StarTrekBlue}"
+			/>
+			<Border
+				Grid.Column="2"
+				Background="{StaticResource StarTrekBlue}"
+			/>
+			<Border
+				Grid.Column="4"
+				Background="{StaticResource StarTrekBlue}"
+				CornerRadius="0,10,10,0"
+			/>
 		</Grid>
 
 		<!--  Adaptive triggers  -->

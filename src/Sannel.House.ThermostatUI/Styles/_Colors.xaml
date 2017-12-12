@@ -2,7 +2,18 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<SolidColorBrush x:Key="ThemeControlForegroundBaseHighBrush" Color="{ThemeResource SystemBaseHighColor}" />
-	<SolidColorBrush x:Key="StarTrekOrange" Color="#FFFFAD01" />
-	<SolidColorBrush x:Key="StarTrekLightBlue" Color="#FFB3C8FD" />
-	<SolidColorBrush x:Key="StarTrekBlue" Color="#FF9D9DFF" />
+	<SolidColorBrush x:Key="StarTrekOrangeSelected" Color="#FFFF9C4B" />
+	<SolidColorBrush x:Key="StarTrekOrange" Color="#FFFE9900" />
+	<!--<SolidColorBrush x:Key="StarTrekLightBlue" Color="#FFB3C8FD" />
+	<SolidColorBrush x:Key="StarTrekBlue" Color="#FF9D9DFF" />-->
+	<SolidColorBrush x:Key="StarTrekBlue" Color="#FF9A99FF" />
+	<SolidColorBrush x:Key="StarTrekLightBlue" Color="#FF9999CD" />
+	<SolidColorBrush x:Key="StarTrekPeach" Color="#FFFF9966"/>
+	<SolidColorBrush x:Key="StarTrekLightPeach" Color="#FFFFCC9A" />
+	<SolidColorBrush x:Key="StarTrekPurple" Color="#FFCB99CC"/>
+	<SolidColorBrush x:Key="StarTrekMagenta" Color="#FFCD6667"/>
+	<SolidColorBrush x:Key="StarTrekLightMagenta" Color="#FFCC6698" />
+	<!--<SolidColorBrush x:Key="StarTrekPurple" Color="#FFCE9CCE" />-->
+	<SolidColorBrush x:Key="StarTrekRed" Color="#FFDF616D" />
+	<SolidColorBrush x:Key="StarTrekBlack" Color="#FF000000" />
 </ResourceDictionary>

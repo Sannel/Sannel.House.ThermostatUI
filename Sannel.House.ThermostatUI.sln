@@ -9,14 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sannel.House.ThermostatUI",
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|ARM.ActiveCfg = Debug|ARM
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|ARM.Build.0 = Debug|ARM
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -26,6 +29,7 @@ Global
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|x86.ActiveCfg = Debug|x86
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|x86.Build.0 = Debug|x86
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Debug|x86.Deploy.0 = Debug|x86
+		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Release|Any CPU.ActiveCfg = Release|x86
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Release|ARM.ActiveCfg = Release|ARM
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Release|ARM.Build.0 = Release|ARM
 		{02EA24E0-7EA5-410F-9CAB-CFD00B2F02B3}.Release|ARM.Deploy.0 = Release|ARM

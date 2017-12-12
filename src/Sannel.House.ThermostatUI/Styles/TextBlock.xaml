@@ -9,7 +9,7 @@
 	</ResourceDictionary.MergedDictionaries>
 
 	<Style TargetType="TextBlock">
-		<Setter Property="FontFamily" Value="ms-appx:///Assets/Swiss911UCmBT.ttf#Swiss911 UCm BT" />
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}" />
 	</Style>
 
 	<!--Common texts-->
