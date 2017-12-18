@@ -19,8 +19,14 @@ namespace Sannel.House.ThermostatUI.Views
 			InitializeComponent();
 		}
 
-		protected async override void OnNavigatedTo(NavigationEventArgs e)
+		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			ViewModel.NavigationFrame = NavigationFrame;
+			ViewModel.NavigationService.Navigate(Pages.Home);
+			NavigationFrame.Navigated += (o, s) =>
+			{
+				ViewModel.Navigation(s);
+			};
 			//await ViewModel.LoadDataAsync(WindowStates.CurrentState);
 		}
 	}

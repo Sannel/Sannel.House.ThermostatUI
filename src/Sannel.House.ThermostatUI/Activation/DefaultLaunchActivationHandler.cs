@@ -29,7 +29,7 @@ namespace Sannel.House.ThermostatUI.Activation
 			// When the navigation stack isn't restored navigate to the first page,
 			// configuring the new page by passing required information as a navigation
 			// parameter
-			NavigationService.Navigate(_navElement, args.Arguments);
+			NavigationService.Navigate(ViewModels.Pages.Wrapper, args.Arguments);
 
 			await Task.CompletedTask;
 		}

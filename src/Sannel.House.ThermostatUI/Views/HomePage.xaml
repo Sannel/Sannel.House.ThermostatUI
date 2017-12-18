@@ -25,6 +25,7 @@
 			Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
 			<!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
 				Place your content here.-->
+			<Button Style="{StaticResource BlueButton}">Test</Button>
 		</Grid>
 	</Grid>
 </Page>

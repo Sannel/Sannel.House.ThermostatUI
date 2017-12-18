@@ -16,10 +16,10 @@ namespace Sannel.House.ThermostatUI.ViewModels
 			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
 			SimpleIoc.Default.Register(() => new NavigationServiceEx());
-			Register<WrapperViewModel, WrapperPage>();
-			Register<WrapperDetailViewModel, WrapperDetailPage>();
-			Register<HomeViewModel, HomePage>();
-			Register<SettingsViewModel, SettingsPage>();
+			Register<WrapperViewModel, WrapperPage>(Pages.Wrapper);
+			Register<HomeViewModel, HomePage>(Pages.Home);
+			Register<SettingsViewModel, SettingsPage>(Pages.Settings);
+			Register<SystemViewModel, SystemPage>(Pages.System);
 		}
 
 		public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
@@ -30,14 +30,16 @@ namespace Sannel.House.ThermostatUI.ViewModels
 
 		public WrapperViewModel WrapperViewModel => ServiceLocator.Current.GetInstance<WrapperViewModel>();
 
+		public SystemViewModel SystemViewModel => ServiceLocator.Current.GetInstance<SystemViewModel>();
+
 		public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 
-		public void Register<VM, V>()
+		public void Register<VM, V>(Pages p)
 			where VM : class
 		{
 			SimpleIoc.Default.Register<VM>();
 
-			NavigationService.Configure(typeof(VM).FullName, typeof(V));
+			NavigationService.Configure(p, typeof(V));
 		}
 	}
 }

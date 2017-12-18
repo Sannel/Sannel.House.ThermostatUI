@@ -7,13 +7,13 @@
 		<ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
 		<ResourceDictionary Source="/Styles/_Thickness.xaml"/>
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="NavButton" TargetType="Button">
-		<Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+	<Style x:Key="NavButton" TargetType="ToggleButton">
+		<Setter Property="Background" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
 		<Setter Property="Foreground" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Padding" Value="8,4,8,4"/>
-		<Setter Property="HorizontalAlignment" Value="Right"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
 		<Setter Property="VerticalAlignment" Value="Center"/>
 		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
@@ -23,8 +23,8 @@
 		<Setter Property="FocusVisualMargin" Value="-3"/>
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="Button">
-					<Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+				<ControlTemplate TargetType="ToggleButton">
+					<Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal">
@@ -48,8 +48,22 @@
 								</VisualState>-->
 								<VisualState x:Name="Pressed">
 									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource StarTrekOrangeSelected}"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Pip">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>-->
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Checked">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Pip">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
 										</ObjectAnimationUsingKeyFrames>
 										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
 											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
@@ -76,9 +90,130 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 
-						<Border BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}" BorderThickness="0,0,0,5">
-							<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Right"/>
-						</Border>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="20"/>
+							</Grid.ColumnDefinitions>
+							<Border BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}" Background="{TemplateBinding Background}" BorderThickness="0,0,0,5">
+								<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="Right" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Right"/>
+							</Border>
+							<Border x:Name="Pip" Visibility="Collapsed" Grid.Column="1" BorderThickness="3,0,0,5" BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}" Background="{TemplateBinding Background}" Margin="0,0,-10,0" CornerRadius="0,20,20,0">
+								
+							</Border>
+						</Grid>
+
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="BaseButton" TargetType="Button">
+		<Setter Property="Background" Value="{StaticResource StarTrekOrange}"/>
+		<Setter Property="Foreground" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="8,4,8,4"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
+		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="FontSize" Value="24"/>
+		<Setter Property="CharacterSpacing" Value="20" />
+		<Setter Property="UseSystemFocusVisuals" Value="True"/>
+		<Setter Property="FocusVisualMargin" Value="-3"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+									</Storyboard>
+								</VisualState>
+								<!--<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+									</Storyboard>
+								</VisualState>-->
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="LeftCorner">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource StarTrekOrangeSelected}" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RightCorner">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource StarTrekOrangeSelected}" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Center">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource StarTrekOrangeSelected}" />
+										</ObjectAnimationUsingKeyFrames>
+										<!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>-->
+									</Storyboard>
+								</VisualState>
+								<!--<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>-->
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="20"/>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="20"/>
+							</Grid.ColumnDefinitions>
+
+							<Border 
+								x:Name="LeftCorner"
+								Background="{TemplateBinding Background}" 
+								BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}"
+								BorderThickness="4,4,0,4"
+								CornerRadius="20,0,0,20">
+							</Border>
+							<Border Grid.Column="1" 
+									x:Name="Center"
+									BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}" 
+									Background="{TemplateBinding Background}" 
+									BorderThickness="0,4"
+									Padding="20,0">
+								<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Center"/>
+							</Border>
+							<Border 
+								x:Name="RightCorner"
+								Grid.Column="2"
+								Background="{TemplateBinding Background}" 
+								BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}"
+								BorderThickness="0,4,4,4"
+								CornerRadius="0,20,20,0">
+							</Border>
+						</Grid>
 
 					</Grid>
 				</ControlTemplate>
@@ -86,30 +221,55 @@
 		</Setter>
 	</Style>
 
-	<Style x:Key="OrangeNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
-		<Setter Property="Background" Value="{StaticResource StarTrekOrange}" />
+	<Style TargetType="Button" BasedOn="{StaticResource BaseButton}">
+		
 	</Style>
-
-	<Style x:Key="BlueNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="BlueButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekBlue}" />
 	</Style>
-
-	<Style x:Key="LightBlueNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="LightBlueButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekLightBlue}" />
 	</Style>
-	<Style x:Key="PeachNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="PeachButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekPeach}" />
 	</Style>
-	<Style x:Key="LightPeachNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="LightPeachButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekLightPeach}" />
 	</Style>
-	<Style x:Key="PurpleNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
-		<Setter Property="Background" Value="{StaticResource StarTrekPurple}" />
-	</Style>
-	<Style x:Key="MagentaNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="MagentaButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekMagenta}" />
 	</Style>
-	<Style x:Key="LightMagentaNavButton" TargetType="Button" BasedOn="{StaticResource NavButton}">
+	<Style x:Key="LightMagentaButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightMagenta}" />
+	</Style>
+	<Style x:Key="PurpleButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekPurple}" />
+	</Style>
+
+	<Style x:Key="OrangeNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+	</Style>
+
+	<Style x:Key="BlueNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background"  Value="{StaticResource StarTrekBlue}" />
+	</Style>
+
+
+	<Style x:Key="LightBlueNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightBlue}" />
+	</Style>
+	<Style x:Key="PeachNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekPeach}" />
+	</Style>
+	<Style x:Key="LightPeachNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightPeach}" />
+	</Style>
+	<Style x:Key="PurpleNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekPurple}" />
+	</Style>
+	<Style x:Key="MagentaNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
+		<Setter Property="Background" Value="{StaticResource StarTrekMagenta}" />
+	</Style>
+	<Style x:Key="LightMagentaNavButton" TargetType="ToggleButton" BasedOn="{StaticResource NavButton}">
 		<Setter Property="Background" Value="{StaticResource StarTrekLightMagenta}" />
 	</Style>
 </ResourceDictionary>

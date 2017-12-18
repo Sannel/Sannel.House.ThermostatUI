@@ -111,7 +111,7 @@
 			x:Name="MasterArea"
 			Grid.Row="2"
 			Grid.Column="0"
-			Margin="0,0,20,0">
+			Margin="0">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="5" />
 				<RowDefinition Height="*"/>
@@ -120,11 +120,12 @@
 			<Border
 				Grid.Row="0"
 				Background="{StaticResource StarTrekOrange}"
+				Margin="0,0,20,0"
 			/>
 			<Border
 				Grid.Row="1"
-				Margin="0,5,0,8"
 				Background="{StaticResource StarTrekRed}"
+				Margin="0,5,20,8"
 			/>
 			<StackPanel
 				Grid.Row="1" 
@@ -132,32 +133,13 @@
 				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 				Padding="0,5,0,0"
 				>
-				<Button HorizontalAlignment="Stretch" Style="{StaticResource BlueNavButton}">
-					<TextBlock HorizontalAlignment="Right"></TextBlock>
-				</Button>
-				<Button HorizontalAlignment="Stretch" Style="{StaticResource PeachNavButton}">
-					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
-				</Button>
-				<Button HorizontalAlignment="Stretch" Style="{StaticResource LightPeachNavButton}">
-					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
-				</Button>
-				<!--<Button HorizontalAlignment="Stretch" Style="{StaticResource PurpleNavButton}">
-					<TextBlock HorizontalAlignment="Right">Test2</TextBlock>
-					<Button.Flyout>
-						<Flyout Placement="Right">
-							<StackPanel BorderBrush="Transparent" Background="Aquamarine">
-								<TextBlock>blue</TextBlock>
-							</StackPanel>
-						</Flyout>
-					</Button.Flyout>
-				</Button>-->
-				<!--<Button HorizontalAlignment="Stretch" Style="{StaticResource LightMagentaNavButton}" Command="{Binding ShutdownCommand}">
-					<TextBlock HorizontalAlignment="Right">SYSTEM</TextBlock>
-				</Button>-->
+				<ToggleButton Style="{StaticResource BlueNavButton}" IsChecked="{Binding IsHomeSelected,Mode=TwoWay}" Command="{Binding HomeCommand}">Home</ToggleButton>
+				<ToggleButton Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightPeachNavButton}" IsChecked="{Binding IsSystemSelected,Mode=TwoWay}" Command="{Binding SystemCommand}">System</ToggleButton>
 			</StackPanel>
 			<Border
 				Grid.Row="2"
 				Background="{StaticResource StarTrekBlue}"
+				Margin="0,0,20,0"
 			/>
 		</Grid>
 
@@ -168,9 +150,9 @@
 			Grid.RowSpan="3"
 			Padding="24,0,0,0">
 
-			<views:WrapperDetailControl
-				x:Name="DetailControl"
-				MasterMenuItem="{x:Bind ViewModel.Selected, Mode=OneWay}"/>
+			<Frame
+				x:Name="NavigationFrame"
+				/>
 		</Grid>
 
 		<Grid 
@@ -218,11 +200,11 @@
 		<!--  Adaptive triggers  -->
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="WindowStates">
-				<i:Interaction.Behaviors>
+				<!--<i:Interaction.Behaviors>
 					<ic:EventTriggerBehavior EventName="CurrentStateChanged">
 						<ic:InvokeCommandAction Command="{x:Bind ViewModel.StateChangedCommand}"/>
 					</ic:EventTriggerBehavior>
-				</i:Interaction.Behaviors>
+				</i:Interaction.Behaviors>-->
 				<VisualState x:Name="WideState">
 					<VisualState.StateTriggers>
 						<AdaptiveTrigger MinWindowWidth="640"/>

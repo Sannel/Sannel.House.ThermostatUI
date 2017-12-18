@@ -126,7 +126,9 @@
     <Compile Include="Services\SampleDataService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\Pages.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SystemViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WrapperDetailViewModel.cs" />
     <Compile Include="ViewModels\WrapperViewModel.cs" />
@@ -135,6 +137,9 @@
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemPage.xaml.cs">
+      <DependentUpon>SystemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WrapperDetailControl.xaml.cs">
       <DependentUpon>WrapperDetailControl.xaml</DependentUpon>
@@ -185,6 +190,10 @@
     <Page Include="Views\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SystemPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WrapperDetailControl.xaml">
       <Generator>MSBuild:Compile</Generator>

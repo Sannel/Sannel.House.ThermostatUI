@@ -1,3 +1,4 @@
+using Sannel.House.ThermostatUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Sannel.House.ThermostatUI.Services
 
 		public event NavigationFailedEventHandler NavigationFailed;
 
-		private readonly Dictionary<string, Type> _pages = new Dictionary<string, Type>();
+		private readonly Dictionary<Pages, Type> _pages = new Dictionary<Pages, Type>();
 
 		private Frame _frame;
 
@@ -48,7 +49,7 @@ namespace Sannel.House.ThermostatUI.Services
 
 		public void GoForward() => Frame.GoForward();
 
-		public bool Navigate(string pageKey, object parameter = null, NavigationTransitionInfo infoOverride = null)
+		public bool Navigate(Pages pageKey, object parameter = null, NavigationTransitionInfo infoOverride = null)
 		{
 			lock (_pages)
 			{
@@ -62,7 +63,7 @@ namespace Sannel.House.ThermostatUI.Services
 			}
 		}
 
-		public void Configure(string key, Type pageType)
+		public void Configure(Pages key, Type pageType)
 		{
 			lock (_pages)
 			{
@@ -80,7 +81,7 @@ namespace Sannel.House.ThermostatUI.Services
 			}
 		}
 
-		public string GetNameOfRegisteredPage(Type page)
+		public Pages GetNameOfRegisteredPage(Type page)
 		{
 			lock (_pages)
 			{
