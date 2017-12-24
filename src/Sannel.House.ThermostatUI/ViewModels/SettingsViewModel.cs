@@ -1,65 +1,21 @@
 using System;
-using System.Windows.Input;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using Sannel.House.ThermostatUI.Services;
+using Sannel.House.Configuration.Common;
 
 using Windows.ApplicationModel;
-using Windows.UI.Xaml;
 
 namespace Sannel.House.ThermostatUI.ViewModels
 {
 	public class SettingsViewModel : ViewModelBase
 	{
-		// TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/pages/settings.md
-		private ElementTheme _elementTheme = ThemeSelectorService.Theme;
-
-		public ElementTheme ElementTheme
+		public async Task<IEnumerable<Setting>> GetAllSettingsAsync()
 		{
-			get { return _elementTheme; }
+			var connection = new Sannel.House.Configuration.ConfigurationConnection();
 
-			set { Set(ref _elementTheme, value); }
+			return await connection.GetAllSettingsAsync();
 		}
-
-		private string _versionDescription;
-
-		public string VersionDescription
-		{
-			get { return _versionDescription; }
-
-			set { Set(ref _versionDescription, value); }
-		}
-
-		private ICommand _switchThemeCommand;
-
-		public ICommand SwitchThemeCommand
-		{
-			get
-			{
-				if (_switchThemeCommand == null)
-				{
-					_switchThemeCommand = new RelayCommand<ElementTheme>(
-						async (param) =>
-						{
-							await ThemeSelectorService.SetThemeAsync(param);
-						});
-				}
-
-				return _switchThemeCommand;
-			}
-		}
-
-		public SettingsViewModel()
-		{
-		}
-
-		public void Initialize()
-		{
-			VersionDescription = GetVersionDescription();
-		}
-
 		private string GetVersionDescription()
 		{
 			var package = Package.Current;
