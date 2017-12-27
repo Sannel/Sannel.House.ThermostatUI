@@ -1,5 +1,5 @@
 <local:SettingControlBase
-	x:Class="Sannel.House.ThermostatUI.Controls.TextSettingControl"
+	x:Class="Sannel.House.ThermostatUI.Controls.IntegerSettingControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Sannel.House.ThermostatUI.Controls"
@@ -10,7 +10,7 @@
 	d:DesignWidth="400">
 
 	<StackPanel Margin="0,0,0,20">
-		<TextBlock Text="{Binding DisplayName,Converter={StaticResource ToUpper}}" />
-		<TextBox x:Name="Input" Text="{Binding Value}" LostFocus="InputLostFocus" />
+		<TextBlock Text="{Binding DisplayName, Converter={StaticResource ToUpper}}" />
+		<TextBox x:Name="Input" LostFocus="InputLostFocus" InputScope="Number" />
 	</StackPanel>
 </local:SettingControlBase>

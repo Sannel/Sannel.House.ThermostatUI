@@ -122,11 +122,11 @@
     <comment>Page title for Wrapper</comment>
   </data>
   <data name="Home_Title.Text" xml:space="preserve">
-    <value>Home</value>
+    <value>HOME</value>
     <comment>Page title for Home</comment>
   </data>
   <data name="Settings_Title.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>SETTINGS</value>
     <comment>Page title for Settings</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">

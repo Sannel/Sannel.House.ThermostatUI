@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.Foundation.Metadata;
 using Windows.System.Profile;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
 
 namespace Sannel.House.ThermostatUI.ViewModels
 {
@@ -28,12 +29,17 @@ namespace Sannel.House.ThermostatUI.ViewModels
 			var page = NavigationService.GetNameOfRegisteredPage(s.Content?.GetType());
 
 			IsHomeSelected = false;
+			IsSettingsSelected = false;
 			IsSystemSelected = false;
 
 			switch (page)
 			{
 				case Pages.System:
 					IsSystemSelected = true;
+					break;
+
+				case Pages.Settings:
+					IsSettingsSelected = true;
 					break;
 
 				default:
@@ -72,6 +78,18 @@ namespace Sannel.House.ThermostatUI.ViewModels
 
 		public Visibility IsSystemAvailable => (ApiInformation.IsApiContractPresent("Windows.System.SystemManagementContract", 1, 0)
 			&& string.Compare(AnalyticsInfo.VersionInfo.DeviceFamily, "Windows.IoT", true) == 0) ? Visibility.Visible : Visibility.Collapsed;
+
+
+		private bool isSettingsSelected;
+		public bool IsSettingsSelected
+		{
+			get => isSettingsSelected;
+			set => Set(nameof(IsSettingsSelected), ref isSettingsSelected, value);
+		}
+
+		private ICommand settingsCommand;
+		public ICommand SettingsCommand
+			=> settingsCommand ?? (settingsCommand = new RelayCommand(() => navigateToPage(Pages.Settings)));
 
 		private void navigateToPage(Pages page)
 		{

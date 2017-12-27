@@ -10,6 +10,8 @@
 
 	<Style TargetType="TextBlock">
 		<Setter Property="FontFamily" Value="{StaticResource Lcars}" />
+		<Setter Property="FontSize" Value="{StaticResource MediumFontSize}" />
+		<Setter Property="CharacterSpacing" Value="20" />
 	</Style>
 
 	<!--Common texts-->
@@ -17,6 +19,7 @@
 		<Setter Property="VerticalAlignment" Value="Center"/>
 		<Setter Property="FontWeight" Value="SemiLight"/>
 		<Setter Property="FontSize" Value="{StaticResource LargeFontSize}"/>
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
 		<Setter Property="TextTrimming" Value="CharacterEllipsis"/>
 		<Setter Property="TextWrapping" Value="NoWrap"/>
 		<Setter Property="Margin" Value="{StaticResource PageTitleMargin}"/>
@@ -25,6 +28,7 @@
 	<Style x:Key="BodyTextStyle" TargetType="TextBlock">
 		<Setter Property="FontWeight" Value="Normal"/>
 		<Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
 		<Setter Property="TextTrimming" Value="CharacterEllipsis"/>
 		<Setter Property="TextWrapping" Value="Wrap"/>
 	</Style>
@@ -33,6 +37,7 @@
 	<Style x:Key="ListTitleStyle" TargetType="TextBlock">
 		<Setter Property="FontWeight" Value="SemiBold"/>
 		<Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
 		<Setter Property="TextTrimming" Value="CharacterEllipsis"/>
 		<Setter Property="TextWrapping" Value="NoWrap"/>
 	</Style>
@@ -41,6 +46,7 @@
 		<Setter Property="FontWeight" Value="Normal"/>
 		<Setter Property="Opacity" Value="0.6"/>
 		<Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+		<Setter Property="FontFamily" Value="{StaticResource Lcars}"/>
 		<Setter Property="TextTrimming" Value="CharacterEllipsis"/>
 		<Setter Property="TextWrapping" Value="NoWrap"/>
 	</Style>

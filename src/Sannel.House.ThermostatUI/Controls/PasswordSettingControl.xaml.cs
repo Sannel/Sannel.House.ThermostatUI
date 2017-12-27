@@ -1,6 +1,4 @@
 using Sannel.House.Configuration.Common;
-using Sannel.House.ThermostatUI.Interfaces;
-using Sannel.House.ThermostatUI.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,15 +13,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Sannel.House.ThermostatUI.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Sannel.House.ThermostatUI.Controls
 {
-	public sealed partial class TextSettingControl : SettingControlBase
+	public sealed partial class PasswordSettingControl : SettingControlBase
 	{
-		public TextSettingControl(Setting setting) : base(setting) 
-			=> this.InitializeComponent();
+		public PasswordSettingControl(Setting setting) : base(setting)
+		{
+			this.InitializeComponent();
+		}
 	}
 }

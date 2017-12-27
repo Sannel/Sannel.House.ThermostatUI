@@ -4,6 +4,7 @@
 
 	<FontFamily x:Key="Lcars">ms-appx:///Assets/Swiss911UCmBT.ttf#Swiss911 UCm BT</FontFamily>
 	<x:Double x:Key="LargeFontSize">28</x:Double>
-	<x:Double x:Key="MediumFontSize">16</x:Double>
+	<x:Double x:Key="MediumFontSize">18</x:Double>
+	<x:Double x:Key="LcarsSpacing">20</x:Double>
 
 </ResourceDictionary>

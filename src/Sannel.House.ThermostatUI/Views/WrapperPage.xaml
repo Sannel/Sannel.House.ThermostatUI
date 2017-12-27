@@ -133,8 +133,9 @@
 				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 				Padding="0,5,0,0"
 				>
-				<ToggleButton Style="{StaticResource BlueNavButton}" IsChecked="{Binding IsHomeSelected,Mode=TwoWay}" Command="{Binding HomeCommand}">Home</ToggleButton>
-				<ToggleButton Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightPeachNavButton}" IsChecked="{Binding IsSystemSelected,Mode=TwoWay}" Command="{Binding SystemCommand}">System</ToggleButton>
+				<ToggleButton Style="{StaticResource BlueNavButton}" IsChecked="{Binding IsHomeSelected,Mode=TwoWay}" Command="{Binding HomeCommand}">HOME</ToggleButton>
+				<ToggleButton Style="{StaticResource PurpleNavButton}" IsChecked="{Binding IsSettingsSelected,Mode=TwoWay}" Command="{Binding SettingsCommand}">SETTINGS</ToggleButton>
+				<ToggleButton Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightPeachNavButton}" IsChecked="{Binding IsSystemSelected,Mode=TwoWay}" Command="{Binding SystemCommand}">SYSTEM</ToggleButton>
 			</StackPanel>
 			<Border
 				Grid.Row="2"
