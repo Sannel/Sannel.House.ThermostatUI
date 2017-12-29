@@ -25,5 +25,12 @@ namespace Sannel.House.ThermostatUI.Controls
 	{
 		public TextSettingControl(Setting setting) : base(setting) 
 			=> this.InitializeComponent();
+		public override void SetColor(InterfaceColors color)
+		{
+			if (App.Current.Resources[$"{color}TextBox"] is Style style)
+			{
+				Input.Style = style;
+			}
+		}
 	}
 }

@@ -6,6 +6,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Sannel.House.ThermostatUI.Controls;
 using Sannel.House.ThermostatUI.Interfaces;
+using Sannel.House.ThermostatUI.Models;
+using System.Collections.Generic;
 
 namespace Sannel.House.ThermostatUI.Views
 {
@@ -40,6 +42,7 @@ namespace Sannel.House.ThermostatUI.Views
 			clearControlls();
 			await ViewModel.NavigatedToAsync();
 			var result = await ViewModel.GetAllSettingsAsync();
+			var queue = new Queue<string>();
 			foreach(var item in result)
 			{
 				SettingControlBase control = null;
@@ -61,8 +64,21 @@ namespace Sannel.House.ThermostatUI.Views
 
 				if (control != null)
 				{
+					if(queue.Count == 0)
+					{
+						foreach(var s in Enum.GetNames(typeof(InterfaceColors)))
+						{
+							queue.Enqueue(s);
+						}
+					}
+
 					control.SettingChanged += settingChanged;
 					SettingControls.Children.Add(control);
+					var value = queue.Dequeue();
+					if(Enum.TryParse<InterfaceColors>(value, out var q))
+					{
+						control.SetColor(q);
+					}
 				}
 			}
 		}

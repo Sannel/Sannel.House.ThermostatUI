@@ -1,4 +1,5 @@
 using Sannel.House.Configuration.Common;
+using Sannel.House.ThermostatUI.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,13 @@ namespace Sannel.House.ThermostatUI.Controls
 					Setting.Value = i.ToString();
 					InvokeSettingChanged(Setting, Setting.Value);
 				}
+			}
+		}
+		public override void SetColor(InterfaceColors color)
+		{
+			if (App.Current.Resources[$"{color}TextBox"] is Style style)
+			{
+				Input.Style = style;
 			}
 		}
 	}

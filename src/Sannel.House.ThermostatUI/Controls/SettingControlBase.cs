@@ -30,6 +30,8 @@ namespace Sannel.House.ThermostatUI.Controls
 
 		public event EventHandler<SettingChangedArgs> SettingChanged;
 
+		public abstract void SetColor(InterfaceColors color);
+
 		protected virtual void InputLostFocus(object sender, RoutedEventArgs e)
 		{
 			if (sender is TextBox input)

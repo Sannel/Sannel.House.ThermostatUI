@@ -9,7 +9,7 @@
 		<ResourceDictionary Source="/Styles/_Thickness.xaml"/>
 	</ResourceDictionary.MergedDictionaries>
 
-	<Style TargetType="TextBox">
+	<Style x:Key="TextBoxBase" TargetType="TextBox">
 		<Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
 		<Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
 		<Setter Property="Foreground" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
@@ -227,4 +227,31 @@
 		</Setter>
 	</Style>
 
+	<Style BasedOn="{StaticResource TextBoxBase}" TargetType="TextBox">
+	</Style>
+
+	<Style x:Key="StarTrekBlueTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekBlue}" />
+	</Style>
+	<Style x:Key="StarTrekLightMagentaTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightMagenta}" />
+	</Style>
+	<Style x:Key="StarTrekPeachTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekPeach}" />
+	</Style>
+	<Style x:Key="StarTrekPurpleTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekPurple}" />
+	</Style>
+	<Style x:Key="StarTekLightBlueTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightBlue}" />
+	</Style>
+	<Style x:Key="StarTrekMagentaTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekMagenta}" />
+	</Style>
+	<Style x:Key="StarTrekLightPeachTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekLightPeach}" />
+	</Style>
+	<Style x:Key="StarTrekRedTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+		<Setter Property="Background" Value="{StaticResource StarTrekRed}" />
+	</Style>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
 using Sannel.House.Configuration.Common;
+using Sannel.House.ThermostatUI.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,14 @@ namespace Sannel.House.ThermostatUI.Controls
 		public PasswordSettingControl(Setting setting) : base(setting)
 		{
 			this.InitializeComponent();
+		}
+
+		public override void SetColor(InterfaceColors color)
+		{
+			if (App.Current.Resources[$"{color}PasswordBox"] is Style style)
+			{
+				Input.Style = style;
+			}
 		}
 	}
 }
