@@ -1,5 +1,5 @@
 using System;
-
+using GalaSoft.MvvmLight.Threading;
 using Sannel.House.ThermostatUI.Services;
 
 using Windows.ApplicationModel.Activation;
@@ -43,6 +43,7 @@ namespace Sannel.House.ThermostatUI
 			{
 				await ActivationService.ActivateAsync(e);
 			}
+			DispatcherHelper.Initialize();
 		}
 
 		/// <summary>

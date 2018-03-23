@@ -16,11 +16,48 @@ using Windows.Foundation.Metadata;
 using Windows.System.Profile;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using Windows.System.Threading;
+using GalaSoft.MvvmLight.Threading;
 
 namespace Sannel.House.ThermostatUI.ViewModels
 {
 	public class WrapperViewModel : ViewModelBase
 	{
+		private DateTime lastEvent = DateTime.Now;
+
+		public WrapperViewModel()
+		{
+			ThreadPoolTimer.CreatePeriodicTimer((timer)=> { DispatcherHelper.CheckBeginInvokeOnUI(() => timerTick(timer)); }, TimeSpan.FromMinutes(1));
+		}
+
+		private void timerTick(ThreadPoolTimer timer)
+		{
+			if(lastEvent >= DateTime.Now.AddMinutes(-1))
+			{
+				IsScreenSaverVisible = Visibility.Visible;
+			}
+			else
+			{
+				IsScreenSaverVisible = Visibility.Collapsed;
+			}
+		}
+
+		public void UserAction()
+		{
+			lastEvent = DateTime.Now;
+			if(IsScreenSaverVisible != Visibility.Collapsed)
+			{
+				IsScreenSaverVisible = Visibility.Collapsed;
+			}
+		}
+
+		private Visibility isScreenSaverVisible = Visibility.Collapsed;
+		public Visibility IsScreenSaverVisible
+		{
+			get => isScreenSaverVisible;
+			set => Set(nameof(IsScreenSaverVisible), ref isScreenSaverVisible, value);
+		}
+
 		public NavigationServiceEx NavigationService => 
 			Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 

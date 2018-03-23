@@ -29,5 +29,10 @@ namespace Sannel.House.ThermostatUI.Views
 			};
 			//await ViewModel.LoadDataAsync(WindowStates.CurrentState);
 		}
+
+		private void page_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+		{
+			ViewModel.UserAction();
+		}
 	}
 }

@@ -9,7 +9,7 @@
 	xmlns:views="using:Sannel.House.ThermostatUI.Views"
 	xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
 	xmlns:i="using:Microsoft.Xaml.Interactivity"
-	mc:Ignorable="d">
+	mc:Ignorable="d" PointerEntered="page_PointerEntered">
 	<Page.Transitions>
 		<TransitionCollection>
 			<NavigationThemeTransition />
@@ -35,202 +35,207 @@
 		</DataTemplate>
 	</Page.Resources>
 
-	<Grid
+	<Grid>
+		<Grid
 		x:Name="ContentArea"
 		Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 		Padding="0,0,2,0">
 
-		<Grid.RowDefinitions>
-			<RowDefinition x:Name="TitleRow" Height="40"/>
-			<RowDefinition Height="20" />
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="10" />
-			<RowDefinition Height="20" />
-		</Grid.RowDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition x:Name="TitleRow" Height="40"/>
+				<RowDefinition Height="20" />
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="10" />
+				<RowDefinition Height="20" />
+			</Grid.RowDefinitions>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition x:Name="MasterColumn" Width="300" />
-			<ColumnDefinition x:Name="DetailColumn" Width="*" />
-		</Grid.ColumnDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition x:Name="MasterColumn" Width="300" />
+				<ColumnDefinition x:Name="DetailColumn" Width="*" />
+			</Grid.ColumnDefinitions>
 
-		<Border
+			<Border
 			Grid.RowSpan="2"
 			Background="{StaticResource StarTrekOrange}"
 			CornerRadius="40,0,0,0"
 			Height="60"
 			/>
-		<Border
+			<Border
 			Grid.Row="1"
 			Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 			CornerRadius="40,0,0,0"
 			Height="20"
 			Width="20" HorizontalAlignment="Right" VerticalAlignment="Bottom"
 			/>
-			
-		<!--<TextBlock
+
+			<!--<TextBlock
 			x:Name="TitlePage"
 			x:Uid="WrapperPage_Title"
 			Grid.ColumnSpan="2"
 			Style="{StaticResource PageTitleStyle}"
 			Visibility="Visible">Test</TextBlock>-->
-		<Grid Grid.Row="0" Grid.Column="1" Margin="0">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="auto"/>
-				<ColumnDefinition Width="20"/>
-				<ColumnDefinition Width="40" />
-			</Grid.ColumnDefinitions>
-			
-			<Border
+			<Grid Grid.Row="0" Grid.Column="1" Margin="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="20"/>
+					<ColumnDefinition Width="40" />
+				</Grid.ColumnDefinitions>
+
+				<Border
 				Grid.Column="0"
 				Height="40"
 				Background="{StaticResource StarTrekOrange}"
 			/>
 
-			<TextBlock
+				<TextBlock
 				Grid.Column="1"
 				Foreground="{StaticResource StarTrekBlue}"
 				Text="ENVIRONMENTAL" FontSize="48" UseLayoutRounding="True" VerticalAlignment="Center" Margin="5,2,5,-2" CharacterSpacing="20"
 				/>
-			<Border
+				<Border
 				Grid.Column="2"
 				Height="40"
 				Width="20"
 				Background="{StaticResource StarTrekOrange}"
 			/>
-			<Border
+				<Border
 				Grid.Column="3"
 				Height="40"
 				Width="40"
 				Background="{StaticResource StarTrekOrange}"
 				CornerRadius="0,20,20,0"
 			/>
-		</Grid>
+			</Grid>
 
-		<Grid
+			<Grid
 			x:Name="MasterArea"
 			Grid.Row="2"
 			Grid.Column="0"
 			Margin="0">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="5" />
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="30" />
-			</Grid.RowDefinitions>
-			<Border
+				<Grid.RowDefinitions>
+					<RowDefinition Height="5" />
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="30" />
+				</Grid.RowDefinitions>
+				<Border
 				Grid.Row="0"
 				Background="{StaticResource StarTrekOrange}"
 				Margin="0,0,20,0"
 			/>
-			<Border
+				<Border
 				Grid.Row="1"
 				Background="{StaticResource StarTrekRed}"
 				Margin="0,5,20,8"
 			/>
-			<StackPanel
+				<StackPanel
 				Grid.Row="1" 
 				VerticalAlignment="Top"
 				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 				Padding="0,5,0,0"
 				>
-				<ToggleButton Style="{StaticResource BlueNavButton}" IsChecked="{Binding IsHomeSelected,Mode=TwoWay}" Command="{Binding HomeCommand}">HOME</ToggleButton>
-				<ToggleButton Style="{StaticResource PurpleNavButton}" IsChecked="{Binding IsSettingsSelected,Mode=TwoWay}" Command="{Binding SettingsCommand}">SETTINGS</ToggleButton>
-				<ToggleButton Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightPeachNavButton}" IsChecked="{Binding IsSystemSelected,Mode=TwoWay}" Command="{Binding SystemCommand}">SYSTEM</ToggleButton>
-			</StackPanel>
-			<Border
+					<ToggleButton Style="{StaticResource BlueNavButton}" IsChecked="{Binding IsHomeSelected,Mode=TwoWay}" Command="{Binding HomeCommand}">HOME</ToggleButton>
+					<ToggleButton Style="{StaticResource PurpleNavButton}" IsChecked="{Binding IsSettingsSelected,Mode=TwoWay}" Command="{Binding SettingsCommand}">SETTINGS</ToggleButton>
+					<ToggleButton Visibility="{Binding IsSystemAvailable}" Style="{StaticResource LightPeachNavButton}" IsChecked="{Binding IsSystemSelected,Mode=TwoWay}" Command="{Binding SystemCommand}">SYSTEM</ToggleButton>
+				</StackPanel>
+				<Border
 				Grid.Row="2"
 				Background="{StaticResource StarTrekBlue}"
 				Margin="0,0,20,0"
 			/>
-		</Grid>
+			</Grid>
 
-		<Grid
+			<Grid
 			x:Name="DetailContentPresenter"
 			Grid.Row="1"
 			Grid.Column="1"
 			Grid.RowSpan="3"
 			Padding="24,20,0,20">
 
-			<Frame
+				<Frame
 				x:Name="NavigationFrame"
 				/>
-		</Grid>
+			</Grid>
 
-		<Grid 
+			<Grid 
 			Grid.Column="0"
 			Grid.RowSpan="2"
 			Grid.Row="3"
 			>
-			<Border
+				<Border
 				Background="{StaticResource StarTrekBlue}"
 				CornerRadius="0,0,0,40"
 				>
-				
-			</Border>
-			<Border 
+
+				</Border>
+				<Border 
 				Height="10"
 				Width="20"
 				Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
 				CornerRadius="0,0,0,10" HorizontalAlignment="Right" VerticalAlignment="Top"
 				/>
-		</Grid>
-		<Grid
+			</Grid>
+			<Grid
 			Grid.Column="1"
 			Grid.Row="4">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="5" />
-				<ColumnDefinition Width="4"/>
-				<ColumnDefinition Width="30" />
-			</Grid.ColumnDefinitions>
-			<Border
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="8" />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition Width="4"/>
+					<ColumnDefinition Width="30" />
+				</Grid.ColumnDefinitions>
+				<Border
 				Background="{StaticResource StarTrekBlue}"
 			/>
-			<Border
+				<Border
 				Grid.Column="2"
 				Background="{StaticResource StarTrekBlue}"
 			/>
-			<Border
+				<Border
 				Grid.Column="4"
 				Background="{StaticResource StarTrekBlue}"
 				CornerRadius="0,10,10,0"
 			/>
-		</Grid>
+			</Grid>
 
-		<!--  Adaptive triggers  -->
-		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="WindowStates">
-				<!--<i:Interaction.Behaviors>
+			<!--  Adaptive triggers  -->
+			<VisualStateManager.VisualStateGroups>
+				<VisualStateGroup x:Name="WindowStates">
+					<!--<i:Interaction.Behaviors>
 					<ic:EventTriggerBehavior EventName="CurrentStateChanged">
 						<ic:InvokeCommandAction Command="{x:Bind ViewModel.StateChangedCommand}"/>
 					</ic:EventTriggerBehavior>
 				</i:Interaction.Behaviors>-->
-				<VisualState x:Name="WideState2">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="900"/>
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MasterColumn.Width" Value="300" />
-					</VisualState.Setters>
-				</VisualState>
-				<VisualState x:Name="WideState">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="485"/>
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MasterColumn.Width" Value="200" />
-					</VisualState.Setters>
-				</VisualState>
-				<VisualState x:Name="NarrowState">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="0"/>
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="MasterColumn.Width" Value="0" />
-					</VisualState.Setters>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
+					<VisualState x:Name="WideState2">
+						<VisualState.StateTriggers>
+							<AdaptiveTrigger MinWindowWidth="900"/>
+						</VisualState.StateTriggers>
+						<VisualState.Setters>
+							<Setter Target="MasterColumn.Width" Value="300" />
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="WideState">
+						<VisualState.StateTriggers>
+							<AdaptiveTrigger MinWindowWidth="485"/>
+						</VisualState.StateTriggers>
+						<VisualState.Setters>
+							<Setter Target="MasterColumn.Width" Value="200" />
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="NarrowState">
+						<VisualState.StateTriggers>
+							<AdaptiveTrigger MinWindowWidth="0"/>
+						</VisualState.StateTriggers>
+						<VisualState.Setters>
+							<Setter Target="MasterColumn.Width" Value="0" />
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateManager.VisualStateGroups>
+		</Grid>
+		<Border x:Name="ScreenSaver" Background="Black" Visibility="{Binding IsScreenSaverVisible, Mode=OneWay}">
+			
+		</Border>
 	</Grid>
 </Page>
